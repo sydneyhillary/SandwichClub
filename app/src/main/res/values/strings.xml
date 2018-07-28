@@ -12,7 +12,7 @@
 
     <!-- Error messages-->
     <string name="detail_error_message">Sandwich data not available</string>
-    <string name="lorem">Lorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to emphasise design elements over content. It\'s also called placeholder (or filler) text. It\'s a convenient tool for mock-ups.</string>
+    <string name="lorem">Lorem ipsum is a pseudo-Latin text used in web design, typography, layout, and printing in place of English.</string>
     <string name="name">Name</string>
 
     <string-array name="sandwich_names">
@@ -112,7 +112,7 @@
             (generally with accompaniments), or as a sandwich or wrap. Shawarma is usually eaten
             with tabbouleh, fattoush, taboon bread, tomato, and cucumber. Toppings include tahini,
             hummus, pickled turnips, and
-            amba.\",\"image\":\"https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Shawarmafood.jpg/800px-Shawarmafood.jpg\",\"ingredients\":[\"Shawarma
+            amba.\",\"image\":\"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHSaEfYs67Wuah5-sGqoFZwow-Mptly8np4bu96-zoBRVuksPQ\",\"ingredients\":[\"Shawarma
             meat (lamb, chicken, turkey, beef) or shawarma falafel\",\"Pita or wrap
             bread\",\"Chopped or shredded vegetables\",\"Pickles\",\"Assorted condiments\"]}
         </item>

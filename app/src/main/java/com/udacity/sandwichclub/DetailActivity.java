@@ -4,8 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -28,7 +31,7 @@ public class DetailActivity extends AppCompatActivity {
     public static final String EXTRA_POSITION = "extra_position";
     private static final int DEFAULT_POSITION = -1;
 
-    private TextView name, alsoKnown, origin, descr, ingred;
+    private TextView name, alsoKnown,alsoKnownAsTV, origin, descr, ingred;
 
 
     private ImageView ingredientsIv;
@@ -90,6 +93,7 @@ public class DetailActivity extends AppCompatActivity {
         origin = (TextView) findViewById(R.id.origin_tv);
         descr = (TextView) findViewById(R.id.description_tv);
         ingred = (TextView) findViewById(R.id.ingredients_tv);
+        alsoKnownAsTV = (TextView) findViewById(R.id.alsoKnownAsTV);
 
         ingredientsIv = (ImageView) findViewById(R.id.image_iv);
 
@@ -101,15 +105,11 @@ public class DetailActivity extends AppCompatActivity {
         List<String> alsoKnownAsList = sandwich.getAlsoKnownAs();
         if (alsoKnownAsList.size() == 0) {
             alsoKnown.setVisibility(View.GONE);
+            alsoKnownAsTV.setVisibility(View.GONE);
         } else {
             alsoKnown.setVisibility(View.VISIBLE);
-            StringBuilder builder = new StringBuilder();
-
-            for (String otherName : alsoKnownAsList) {
-                builder.append(otherName).append(", ");
-            }
-            builder.setLength(builder.length() - 2);
-            alsoKnown.setText(builder);
+            alsoKnown.setText(TextUtils.join(", ", sandwich.getAlsoKnownAs()));
+            alsoKnown.startAnimation((Animation) AnimationUtils.loadAnimation(this,R.anim.anim));
         }
 
         List<String> ingredientsList = sandwich.getIngredients();
@@ -118,7 +118,7 @@ public class DetailActivity extends AppCompatActivity {
         } else {
             StringBuilder ingredients = new StringBuilder();
             for (String ingredient : ingredientsList) {
-                ingredients.append(ingredient).append("/n");
+                ingredients.append(ingredient).append("\n");
             }
             ingredients.setLength(ingredients.length() - 2);
 
@@ -128,8 +128,8 @@ public class DetailActivity extends AppCompatActivity {
         String description = sandwich.getDescription();
         descr.setText(description);
 
-        String name = sandwich.getMainName();
-        descr.setText(name);
+        String mName = sandwich.getMainName();
+        name.setText(mName);
 
 
 

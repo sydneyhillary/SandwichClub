@@ -15,6 +15,7 @@ public class JsonUtils {
     public static Sandwich parseSandwichJson(String json) {
         try {
             JSONObject object = new JSONObject(json);
+            JSONObject object1 = object.getJSONObject("name");
 
             List<String> ingredients = new ArrayList<>();
             JSONArray array = object.getJSONArray("ingredients");
@@ -24,16 +25,16 @@ public class JsonUtils {
             }
 
             List<String> alsoKnownAs = new ArrayList<>();
-            JSONArray array1 = object.getJSONArray("alsoKnownAs");
+            JSONArray array1 = object1.getJSONArray("alsoKnownAs");
             for (int i = 0; i<array1.length(); i++){
                 String also = array1.getString(i);
                 alsoKnownAs.add(also);
             }
-            String mainName = object.getString("name");
+            String mainName = object1.getString("mainName");
+
             String placeOfOrigin = object.getString("placeOfOrigin");
             String description = object.getString("description");
             String image = object.getString("image");
-
 
 
             return new Sandwich(mainName, alsoKnownAs, placeOfOrigin, description, image, ingredients);
